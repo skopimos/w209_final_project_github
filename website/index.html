@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<title>Trade like an Insider</title>
+<meta charset="utf-8"  http-equiv="encoding">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+
+
+
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+<script src="https://d3js.org/d3-scale.v3.min.js"></script>
+<script src="https://d3js.org/d3-color.v1.min.js"></script>
+<script src="https://d3js.org/topojson.v1.min.js"></script>
+<script src="https://d3js.org/d3-array.v2.min.js"></script>
+<script src="https://d3js.org/d3-axis.v1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+
+
+
+<!-- Bootstrap core CSS -->
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
+body, html {
+    height: 100%;
+    line-height: 1.8;
+}
+/* Full height image header */
+.bgimg-1 {
+    background-position: center;
+    background-size: cover;
+    background-image: url("img/background2.jpg");
+    opacity: 0.9;
+    min-height: 100%;
+    
+}
+
+.bgimg-2 {
+    background-position: center;
+    background-size: cover;
+    background-image: url("img/background3.jpeg");
+    opacity: 0.9;
+    min-height: 100%;
+    
+}
+.text-block {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  height: 50%;
+  background-color:black  ;
+  color: white;
+  padding-left: 20px;
+  padding-right: 10px;
+  opacity: 0.8;
+
+}
+.w3-bar .w3-button {
+    padding: 16px;
+
+    
+}
+#headerPopup{
+  width:75%;
+  margin:0 auto;
+}
+
+#headerPopup iframe{
+  width:100%;
+  margin:0 auto;
+}
+
+
+</style>
+
+
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links
+  $("a").on('click', function(event) {
+
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 800, function(){
+
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+});
+</script>
+
+<script>
+$(document).ready(function() {
+  $('.popup-youtube').magnificPopup({
+    type:'iframe',
+    midClick: true // Allow opening popup on middle mouse click. Always set it to true if you don't provide alternative source in href.
+  });         
+});
+</script>
+
+
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top" >
+  <div class="w3-bar w3-white w3-card" id="myNavbar">
+    <a href="#home" class="w3-bar-item w3-button w3-wide">HOME</a>
+    <!-- Right-sided navbar links -->
+    <div class="w3-right w3-hide-small">
+      <a href="#intro" class="w3-bar-item w3-button">Introduction</a>
+      <a href="#overview" class="w3-bar-item w3-button">Overview</a>
+      <a href="#trans" class="w3-bar-item w3-button"> Transactions</a>
+      <a href="#profit" class="w3-bar-item w3-button"> Profitability</a>
+      <a href="#conclusion" class="w3-bar-item w3-button">Conclusions</a>
+      <a href="#team" class="w3-bar-item w3-button">Team</a>
+    </div>
+    <!-- Hide right-floated links on small screens and replace them with a menu icon -->
+
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </div>
+</div>
+
+Sidebar on small screens when clicking the menu icon
+<nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="#intro" onclick="w3_close()" class="w3-bar-item w3-button">Introduction</a>
+  <a href="#overview" onclick="w3_close()" class="w3-bar-item w3-button">Overview</a>
+  <a href="#trans" onclick="w3_close()" class="w3-bar-item w3-button"> Transactions</a>
+  <a href="#profit" onclick="w3_close()" class="w3-bar-item w3-button"> Profitability</a>
+  <a href="#dashboard" onclick="w3_close()" class="w3-bar-item w3-button"> Dashbord</a>
+  <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button"> Team</a>
+</nav>
+
+
+<!-- Header with full-height image -->
+<header class="bgimg-1 w3-display-container w3-grayscale-min" id="home">
+  <div class="w3-display-left w3-text-white text-block" style="padding:48px">
+    <span class="w3-xxxlarge w3-hide-small">TRADE LIKE AN INSIDER </span>
+    <P class="w3-xlarge" style='font-style: italic' >An analysis of how companies insiders trade stocks</P>
+    <br>
+
+    <span class="w3-large">Among many participants in the US stock market, there is an unique group of invetors who possess knowledges and information that other investrs cannot get access to.  
+      These are the company "insiders".  In this study, we attempt to take a closer look into how insiders buy and selling activities. We want answer the following question: does the possession of non-public information give insiders an edge in trading?  </span>
+   <br>
+    <p><a href="#intro" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id=startbutton>Start Exploring</a></p>
+  </div>
+</header>
+
+<!-- Introduction Section-->
+<div class="w3-container w3-light-grey" style="padding:80px 16px" id="intro">
+  <!-- <h3 class="w3-center"></h3> -->
+  <p class="w3-left w3-xxlarge w3-row-padding">INTRODUCTION</p>
+  <div class="w3-row-padding" style="margin-top:40px">
+    <div class="w3-half" id = 'introtext'>
+      <p class="w3-large" style= "font-weight: bold">INSIDERS: who are they? </p>
+			<p>An insider is a person who possesses access to <i><strong>material</strong></i> and <i><strong>non-public</strong></i> information about a corporation. This makes a company's directors and high-level executives insiders. </p>
+      <p>While insiders only owns a small percentage of the overall equity market (see chart to the right), they remain an unique group given that the information they possess cannot be accessed with other investors.</p>
+    </div>
+  <br>
+    
+    <div class="w3-half" id = 'circlechart'>
+      <!-- <p><a class="w3-middle w3-button w3-white w3-padding-small w3-small w3-margin-top  w3-hover-opacity-off" id=sob style = 'font-weight: bold'>Click to see insider ownership</a></p> -->
+      <!-- Add chart showing insider ownership vs. whole market -->
+      <!-- <img src= 'img/mktshare_chart.jpg' style = 'height:80%; width: 80%; margin-top:100px'> -->
+      <script> 
+      // src= 'js/circle.js'
+      data = [30,23,0.7]
+      var divwidth = document.getElementById('introtext').clientWidth;
+      var divHeight  = document.getElementById('introtext').clientHeight;
+
+      console.log(divwidth)
+      console.log(divHeight)
+      var svg = d3.select('#circlechart').append('svg').attr('width', divwidth).attr('height', divHeight)
+
+      // svg.append('text')
+      // .attr('x', divwidth/2)
+      // .attr('y',( divHeight-divHeight*0.7)*0.3)
+      // .text('Overall Insider Ownership is Minute')
+      // .style("text-anchor", "middle")
+      // .style('font-size','15px')
+
+      svg.selectAll('circle')
+      .data(data)
+      .enter().append('circle')
+      .attr('r', divHeight/2*0.7)
+      .attr('cx', divwidth/2)
+      .attr('cy', divHeight/2)
+     .style("fill", '#c2d6d6')
+
+     svg.append('text')
+      .attr('x', divwidth/2)
+      .attr('y', (divHeight-divHeight/2*0.8*2)*1.2)
+      .text('Total US Equity Market: $30T')
+      .style("text-anchor", "middle")
+      // .style('font-size','15px')
+     ;
+
+     
+      svg.append('circle')
+      .transition()
+        .delay(1000)
+        .attr('r', divHeight/2*0.7/30*23)
+        .attr('cx', divwidth/2)
+        .attr('cy', divHeight/2 + (divHeight/2*0.8-divHeight/2*0.8/30*23))
+      .style("fill", "#85adad");
+
+      svg.append('text')
+      .transition()
+        .delay(1100)
+        .attr('x', divwidth/2)
+        .attr('y',(divHeight-divHeight/2*0.8/30*23*2)*1.3)
+        .text('Captured by this dataset: $23T')
+        .style("text-anchor", "middle")
+        // .style('font-size','15px')
+      ;
+
+
+      svg.append('circle')
+      .transition()
+      .delay(2000)
+        .attr('r', divHeight/2*0.7/30*0.7)
+        .attr('cx', divwidth/2)
+        .attr('cy',(divHeight-divHeight/2*0.8/30*23*2)*1.2 + (divHeight/2*0.8-divHeight/2*0.8/30*0.7))
+      .style("fill", "#ff0066");
+
+
+      svg.append('text')
+      .transition()
+        .delay(2100)
+        .attr('x', divwidth/2)
+        .attr('y',  divHeight*0.9)
+        .text('Owned by insiders: $667B')
+        .style("text-anchor", "middle")
+        // .style('font-size','15px')
+      ;
+      
+      </script>
+    <br>
+  
+     </div>
+  
+    
+    <div class= "w3-white" id= 'intro_con'></div>
+      <div class=" w3-half w3-left" style ='padding:10px' id = 'introdata'>
+        <!-- <div class="w3-half"></div> -->
+          <p class= "w3-large " style = 'font-weight: bold'>DATA</p>
+          <p>Because of the information they have access to, insiders are required by the SEC to file prior to buying and selling stocks of which they are an insider.  Also, it is required by law that insiders can only trade when they do not posess "material non-public" information. But is that truly the case?</p>
+          <p>We are using these required filings (Form 4) to do our analysis. While the data can be found on SEC website, we are using ready-cleaned data from WRDS and with supplemental data from Bloomberg.</p>
+          <p>The data includes:</p>
+          <li>1791 Stocks across 12 sectors</li>
+          <li>110,000 Transactions </li>
+          <li>22,000 unique insiders</li>
+      </div>
+      
+
+      <div class='w3-half w3-right  ' id='viz1585857751768' style='position: relative'>
+        <br>
+        <p class = 'w3-left ' style='font-weight:bold'>List of companies (hover over to see details)
+          <button class="popup-youtube" href="http://www.youtube.com/watch?v=oKPlb3xtBnI">DEMO</button><br/>
+        </p>
+        <noscript>
+          <a href='#'>
+            <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;f4&#47;f4_15857771510920&#47;Ownershpbubble&#47;1_rss.png' style='border: none' />
+          </a>
+        </noscript>
+        <object class='tableauViz'  style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+          <param name='embed_code_version' value='3' /> 
+          <param name='site_root' value='' />
+          <param name='name' value='f4_15857771510920&#47;Ownershpbubble' />
+          <param name='tabs' value='no' />
+          <param name='toolbar' value='no' />
+          <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;f4&#47;f4_15857771510920&#47;Ownershpbubble&#47;1.png' /> 
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner' value='yes' />
+          <param name='display_overlay' value='yes' />
+          <param name='display_count' value='yes' />
+          <param name='filter' value='publish=yes' />
+        </object></div>                
+        <script type='text/javascript'>                    
+        var divElement = document.getElementById('viz1585857751768');                    
+        var vizElement = divElement.getElementsByTagName('object')[0];                    
+        vizElement.style.width='100%';vizElement.style.height=document.getElementById('introdata').clientHeight *0.97+'px';                    
+        var scriptElement = document.createElement('script');                    
+        scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    
+        vizElement.parentNode.insertBefore(scriptElement, vizElement);                
+        </script>
+       <div style ='padding:16px'>
+        <p><a href="#overview" class="w3-button w3-black">NEXT CHART > Overview</a></p>
+       </div>
+      </div>
+     
+       
+    
+
+
+  
+<!-- Overview Section-->
+<div class="w3-container w3-white" style="padding:80x 16px" id=overview>
+
+  <div class="w3-row-padding" style="margin-top:48px">
+    <!-- <div class="w3-half"></div> -->
+      <p class = 'w3-xlarge w3-'>OWNERSHIP OVERVIEW: Ownership varies across board</p>
+    <div style='background-color:#E0E0E0' id= overviewtext>
+      <p class= "w3-medium" style='font-weight: bold text-alignment: center'>Interesting Observations:</p>
+      <li class = 'w3-small'>Ownership varies across sector; Consumer service has the highest ownership, untilities lowest. </li>
+      <li class = 'w3-small'>Ownership have fluctuated over time but generally staying inside the 2-4% band.  Ownership was lowest in 2013 and highest in 2015.</li>
+      <li class = 'w3-small'>Among executives, CEOs own most shares while CFOs own least.</li>
+      <li class = 'w3-small'>Insider ownership is highest among small cap companies (sub $5bn market cap) while lowest in large cap companies. </li>
+    </div>
+    <div>
+      <p style = 'color: #2a6f6f'>Play with it yourself: What is the average CEO ownership in financial companies?
+      <!-- <button  class="popup-youtube btn btn-outline-danger " href="#headerPopup" id="overviewvideo" >DEMO</button> -->
+      <button class="popup-youtube" href="http://www.youtube.com/watch?v=IZNa2zOLoxM">DEMO</button><br/>
+     </p>
+     
+
+    <div class='tableauPlaceholder' id='viz1585875517200' style='position: relative'>
+            
+      <noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;f4&#47;f4_15857771510920&#47;ownership&#47;1_rss.png' style='border: none' />
+      </a>
+    </noscript>
+    <object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+      <param name='embed_code_version' value='3' /> 
+      <param name='site_root' value='' />
+      <param name='name' value='f4_15857771510920&#47;ownership' />
+      <param name='tabs' value='no' />
+      <param name='toolbar' value='yes' />
+      <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;f4&#47;f4_15857771510920&#47;ownership&#47;1.png' /> 
+      <param name='animate_transition' value='yes' />
+      <param name='display_static_image' value='yes' />
+      <param name='display_spinner' value='yes' />
+      <param name='display_overlay' value='yes' />
+      <param name='display_count' value='yes' />
+      <param name='filter' value='publish=yes' />
+    </object>
+  </div>                
+  <script type='text/javascript'>                  
+    var divElement = document.getElementById('viz1585875517200');                    
+    var vizElement = divElement.getElementsByTagName('object')[0];                   
+     if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';
+     vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} 
+     else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';
+     vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} 
+     else { vizElement.style.width='100%';vizElement.style.height='1577px';}                     
+     var scriptElement = document.createElement('script');                    
+     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                   
+      vizElement.parentNode.insertBefore(scriptElement, vizElement);               
+       </script> 
+    
+   
+    </div>
+  </div>
+  <div style ='padding:16px'> <p><a href="#trans" class="w3-button w3-black">NEXT CHART > Transactions</a></p></div>
+</div>
+
+
+<!-- Transactions Section-->
+<div class="w3-container w3-light-grey" style="padding: 16px" id="trans">
+  <div class="w3-row-padding" style="margin-top:40px">
+    <p class = 'w3-xlarge w3-'>TRANSACTIONS: More selling than buying</p>
+    <div style ='background-color: white'>  
+    <p class= "w3-medium" style='font-weight: bold'>Interesting Observations:</p>
+      <li class = 'w3-small'>Insiders sell more shares than they buy, both in number of transactions and value of transactions. </li>
+      <li class = 'w3-small'>Small Cap insiders are most active in trading; Across market caps, insiders net sell shares, with small cap insiders sell the most. </li>
+      <li class = 'w3-small'>Insiders have generally good timing in buying/selling shares, such as selling ahead of 4Q18 crash. </li>
+   
+    </div>
+    <br>
+   
+      
+      <!-- Add chart showing insider ownership vs. whole market -->
+      
+    </div>
+    <div class='tableauPlaceholder' id='viz1585939919974' style='position: relative'>
+      <p style = 'color: #2a6f6f'>Play with it yourself: How much shares did utilities executives buy in 3Q18 (as % of market cap)?
+      <button class="popup-youtube" href="http://www.youtube.com/watch?v=5ad6XRiRP5c">DEMO</button><br/>
+      </p>
+      <noscript><a href='#'>
+        <img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;f4&#47;f4_15857771510920&#47;transactions&#47;1_rss.png' style='border: none' />
+      </a>
+    </noscript>
+    <object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+      <param name='embed_code_version' value='3' /> 
+      <param name='site_root' value='' />
+      <param name='name' value='f4_15857771510920&#47;transactions' />
+      <param name='tabs' value='no' />
+      <param name='toolbar' value='yes' />
+      <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;f4&#47;f4_15857771510920&#47;transactions&#47;1.png' /> 
+      <param name='animate_transition' value='yes' />
+      <param name='display_static_image' value='yes' />
+      <param name='display_spinner' value='yes' />
+      <param name='display_overlay' value='yes' />
+      <param name='display_count' value='yes' />
+      <param name='filter' value='publish=yes' />
+    </object>
+  </div>                
+  <script type='text/javascript'>                    
+  var divElement = document.getElementById('viz1585939919974');                    
+  var vizElement = divElement.getElementsByTagName('object')[0];                   
+   if ( divElement.offsetWidth > 800 ) 
+   { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.7)+'px';}
+    else if ( divElement.offsetWidth > 500 ) 
+    { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.7)+'px';}
+     else { vizElement.style.width='100%';vizElement.style.height='1627px';}                     
+     var scriptElement = document.createElement('script');                    
+     scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                  
+       vizElement.parentNode.insertBefore(scriptElement, vizElement);               
+       </script>
+       
+  </div>
+  <div style ='padding:16px'></div> <p><a href="#profit" class="w3-button w3-black">NEXT CHART > Profitability</a></p></div>
+</div>
+ 
+</div>
+
+<!-- Profitability Section-->
+<div class="w3-container w3-white" style="padding:16px" id="profit">
+
+  <div class="w3-row-padding" style="margin-top:40px">
+    <!-- <div class="w3-half"></div> -->
+      <p class = 'w3-xlarge w3-'>PROFITABILITY: Not all transactions are equally profitable </p>
+      <div style ='background-color: #E0E0E0'>  
+        <p class= "w3-medium" style='font-weight: bold'>Interesting Observations:</p>
+          <li class = 'w3-small'>Insiders purchases are more profitable than insider sales. </li>
+          <li class = 'w3-small'>Trades tend to be most profitable 6 months from transaction date. </li>
+          <li class = 'w3-small'>Overall insiders in healthcare are most profitable, cosumer services least profitable. </li>
+      
+        </div>
+      
+
+      <!-- adding in profit chart -->
+      <div class='tableauPlaceholder' id='viz1586071289142' style='position: relative'>
+        <p style = 'color: #2a6f6f'>Play with it yourself: What was the 6M profit for shares bought by industrial executives in 3Q17?
+          <button class="popup-youtube" href="http://www.youtube.com/watch?v=5SGangfKUD0">DEMO</button><br/>
+        </p>
+
+        <noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;9C&#47;9CRTF9ZBZ&#47;1_rss.png' style='border: none' />
+        </a>
+      </noscript>
+      <object class='tableauViz'  style='display:none;'>
+        <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+        <param name='embed_code_version' value='3' />
+         <param name='path' value='shared&#47;9CRTF9ZBZ' />
+          <param name='toolbar' value='yes' />
+          <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;9C&#47;9CRTF9ZBZ&#47;1.png' /> 
+          <param name='animate_transition' value='yes' />
+          <param name='display_static_image' value='yes' />
+          <param name='display_spinner' value='yes' />
+          <param name='display_overlay' value='yes' />
+          <param name='display_count' value='yes' />
+        </object></div>                
+        <script type='text/javascript'>                   
+         var divElement = document.getElementById('viz1586071289142');                    
+         var vizElement = divElement.getElementsByTagName('object')[0];                    
+         if ( divElement.offsetWidth > 800 ) 
+         { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.78)+'px';} 
+         else if ( divElement.offsetWidth > 500 ) 
+         { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.78)+'px';} 
+         else { vizElement.style.width='100%';vizElement.style.height='1727px';}                     
+         var scriptElement = document.createElement('script');                   
+          scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                   
+           vizElement.parentNode.insertBefore(scriptElement, vizElement);               
+            </script>
+  </div>
+  <div style ='padding:16px'><p><a href="#profit2" class="w3-button w3-black">NEXT CHART > Profitability- A timelapse</a></p></div>
+</div>
+<!-- Profitability Section-->
+<div class="w3-container w3-white" style="padding:16px" id="profit2">
+
+  <div class="w3-row-padding" style="margin-top:40px">
+    <!-- <div class="w3-half"></div> -->
+      <p class = 'w3-xlarge w3-'>PROFITABILITY: A timelapse</p>
+      <div style ='background-color: #E0E0E0'>  
+        <p class= "w3-medium" style='font-weight: bold'>Observations:</p>
+        <li class = 'w3-small'> Spread in profitability is wider for sells than buys. </li>
+        <li class = 'w3-small'> Some sector usually have returns around 0% (e.g. capital goods), while other sectors see bigger swings in profitability (e.g. Healthcare, Tech) </li>
+        
+      </div>
+      
+      <p style = 'color: #2a6f6f'>Play with it yourself! The chart below show individual transactions color coded by sector. 
+        <button class="popup-youtube" href="http://www.youtube.com/watch?v=JEoUT5rSEkk">DEMO</button><br/>
+        </p>  
+      <!-- adding in profit chart -->
+      <div class='tableauPlaceholder' id='viz1586817033133' style='position: relative'>
+        <noscript>
+          <a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;f4&#47;f4_15857771510920&#47;profit_time_dash&#47;1_rss.png' style='border: none' />
+          </a>
+        </noscript>
+        <object class='tableauViz'  style='display:none;'>
+          <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> 
+          <param name='embed_code_version' value='3' />
+           <param name='site_root' value='' />
+           <param name='name' value='f4_15857771510920&#47;profit_time_dash' />
+           <param name='tabs' value='no' />
+           <param name='toolbar' value='yes' />
+           <param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;f4&#47;f4_15857771510920&#47;profit_time_dash&#47;1.png' /> 
+           <param name='animate_transition' value='yes' />
+           <param name='display_static_image' value='yes' />
+           <param name='display_spinner' value='yes' />
+           <param name='display_overlay' value='yes' />
+           <param name='display_count' value='yes' />
+           <param name='filter' value='publish=yes' />
+          </object></div>                
+          <script type='text/javascript'>                 
+             var divElement = document.getElementById('viz1586817033133');                   
+              var vizElement = divElement.getElementsByTagName('object')[0];                   
+               if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} 
+               else if ( divElement.offsetWidth > 500 ) 
+               { vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';} 
+               else { vizElement.style.width='100%';vizElement.style.height='1077px';}                     
+               var scriptElement = document.createElement('script');                   
+                scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                   
+                 vizElement.parentNode.insertBefore(scriptElement, vizElement);               
+                  </script>
+    
+    
+
+  </div>
+  <div style ='padding:16px'><p><a href="#conclusion" class="w3-button w3-black">NEXT> Conclusions</a></p></div>
+</div>
+
+
+<!-- Header with full-height image -->
+<footer class="bgimg-2 w3-display-container w3-grayscale-min" id="conclusion">
+  <div class="w3-display-left w3-text-white text-block" style="padding:48px">
+    <span class="w3-xxxlarge w3-hide-small">CONCLUSIONS:</span>
+    <br>
+    <br>
+    <ol type='1'>
+    <li class = 'w3-medium'> While insiders only own a small percentage of the overall US, the consistency in profitability of insider trasactions suggest that insiders do have an edge in trading stocks.  </li>
+    <br>
+    <li class = 'w3-medium'> Insiders show more consistency in profitable purchases than sales.  Which makes sense because there could be many reasons why insiders are selling stock (e.g. diversification, suppose of lifestyle, etc.) but there is only one reason why insiders would actively buy more shares - they expecte share prices to move higher.</li>
+    <br>
+    <li class = 'w3-medium'> Insiders in certain sectors, such as healthcare and tech, have more success in trading profitabily than other sectors such as utilities. </li>
+  </ol>
+   <br>
+  </div>
+</footer>
+<!-- <div class="w3-container w3-white" style="padding:16px" id="conclusion">
+
+  <div class="w3-row-padding" style="margin-top:40px">
+    <div class="w3-half"></div>
+      <p class = 'w3-xlarge w3-'>Conclusion</p>
+      <div style ='background-color: #E0E0E0'>  
+        <p class= "w3-large" style='font-weight: bold'>Here are our top conclusions:</p>
+          <li class = 'w3-small'> While insiders only own a small percentage of the overall US, the consistency in profitability of insider trasactions suggest that insiders do have an edge in trading stocks.  </li>
+          <li class = 'w3-small'> Insiders show more consistency in profitable purchases than sales.  Which makes sense because there could be many reasons why insiders are selling stock (e.g. diversification, suppose of lifestyle, etc.) but there is only one reason why insiders would actively buy more shares - they expecte share prices to move higher.</li>
+          <li class = 'w3-small'>There were significantly fewer transactions between 2Q18 and 1Q19 across sectors.  </li>
+      
+        </div>
+    
+
+  </div>
+ 
+</div>
+ -->
+
+
+<!-- Footer -->
+<footer class="footer text-center" id="team">
+  <style>
+    .footer {
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+  background-color: #23303d;
+  color: #fff;
+}
+  </style>
+  <div class="container-fluid">
+    <h2 class="text-center text-uppercase text-white">Team</h2>
+    <div class="row">
+      <div class="col-sm-3">
+        <h5 class="w3-large">Thaddeus Segura</h5>
+        <p class="w3-small">
+          thaddeus-segura@berkeley.edu
+        </p>
+      </div>
+      <div class="col-sm-3">
+        <h5 class="w3-large">Ying Hua</h5>
+        <p class="w3-small">
+          yinghua26@berkeley.edu
+        </p>
+      </div>
+      <div class="col-sm-3">
+        <h5 class="w3-large">Tina Agarwal</h5>
+        <p class="w3-small">
+          tina.agarwal@berkeley.edu
+        </p>
+      </div>
+      <div class="col-sm-3">
+        <h5 class="w3-large">Shirley Deng</h5>
+        <p class="w3-small">
+          shirleydeng@berkeley.edu
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body>
+</html>
