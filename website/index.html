@@ -164,7 +164,7 @@ Sidebar on small screens when clicking the menu icon
     <P class="w3-xlarge" style='font-style: italic' >An analysis of how companies insiders trade stocks</P>
     <br>
 
-    <span class="w3-large">Among many participants in the US stock market, there is an unique group of invetors who possess knowledges and information that other investrs cannot get access to.  
+    <span class="w3-large">Among many participants in the US stock market, there is an unique group of investors who possess knowledge and information that other investors cannot get access to.  
       These are the company "insiders".  In this study, we attempt to take a closer look into how insiders buy and selling activities. We want answer the following question: does the possession of non-public information give insiders an edge in trading?  </span>
    <br>
     <p><a href="#intro" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id=startbutton>Start Exploring</a></p>
@@ -253,7 +253,7 @@ Sidebar on small screens when clicking the menu icon
       .transition()
         .delay(2100)
         .attr('x', divwidth/2)
-        .attr('y', (divHeight-divHeight/2*0.8/30*23*2)*1.2 + (divHeight/2*0.8-divHeight/2*0.8/30*0.7))
+        .attr('y',  divHeight*0.9)
         .text('Owned by insiders: $667B')
         .style("text-anchor", "middle")
         // .style('font-size','15px')
@@ -433,9 +433,9 @@ Sidebar on small screens when clicking the menu icon
      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                  
        vizElement.parentNode.insertBefore(scriptElement, vizElement);               
        </script>
-       <p><a href="#profit" class="w3-button w3-black">NEXT CHART > Profitability</a></p>
+       
   </div>
-    
+  <div style ='padding:16px'></div> <p><a href="#profit" class="w3-button w3-black">NEXT CHART > Profitability</a></p></div>
 </div>
  
 </div>
@@ -489,8 +489,7 @@ Sidebar on small screens when clicking the menu icon
            vizElement.parentNode.insertBefore(scriptElement, vizElement);               
             </script>
   </div>
-  <br>
-  <p><a href="#profit2" class="w3-button w3-black">NEXT CHART > Profitability- A timelapse</a></p>
+  <div style ='padding:16px'><p><a href="#profit2" class="w3-button w3-black">NEXT CHART > Profitability- A timelapse</a></p></div>
 </div>
 <!-- Profitability Section-->
 <div class="w3-container w3-white" style="padding:16px" id="profit2">
@@ -499,12 +498,15 @@ Sidebar on small screens when clicking the menu icon
     <!-- <div class="w3-half"></div> -->
       <p class = 'w3-xlarge w3-'>PROFITABILITY: A timelapse</p>
       <div style ='background-color: #E0E0E0'>  
-        <p class= "w3-medium" style='font-weight: bold'>Play with it yourself! The chart below show individual transactions color coded by sector. Observations:</p>
+        <p class= "w3-medium" style='font-weight: bold'>Observations:</p>
         <li class = 'w3-small'> Spread in profitability is wider for sells than buys. </li>
         <li class = 'w3-small'> Some sector usually have returns around 0% (e.g. capital goods), while other sectors see bigger swings in profitability (e.g. Healthcare, Tech) </li>
-        </div>
+        
+      </div>
       
-
+      <p style = 'color: #2a6f6f'>Play with it yourself! The chart below show individual transactions color coded by sector. 
+        <button class="popup-youtube" href="http://www.youtube.com/watch?v=JEoUT5rSEkk">DEMO</button><br/>
+        </p>  
       <!-- adding in profit chart -->
       <div class='tableauPlaceholder' id='viz1586817033133' style='position: relative'>
         <noscript>
@@ -541,7 +543,7 @@ Sidebar on small screens when clicking the menu icon
     
 
   </div>
-  <p><a href="#conclusion" class="w3-button w3-black">NEXT> Conclusions</a></p>
+  <div style ='padding:16px'><p><a href="#conclusion" class="w3-button w3-black">NEXT> Conclusions</a></p></div>
 </div>
 
 
