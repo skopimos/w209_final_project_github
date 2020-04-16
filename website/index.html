@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="stylesheet" href= "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="static/css/style.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.2.0/leaflet.css">
@@ -39,7 +39,7 @@ body, html {
 .bgimg-1 {
     background-position: center;
     background-size: cover;
-    background-image: url("img/background2.jpg");
+    background-image: url("static/img/background2.jpg");
     opacity: 0.9;
     min-height: 100%;
     
@@ -48,7 +48,7 @@ body, html {
 .bgimg-2 {
     background-position: center;
     background-size: cover;
-    background-image: url("img/background3.jpeg");
+    background-image: url("static/img/background3.jpeg");
     opacity: 0.9;
     min-height: 100%;
     
@@ -147,12 +147,12 @@ $(document).ready(function() {
 
 Sidebar on small screens when clicking the menu icon
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close Ã—</a>
   <a href="#intro" onclick="w3_close()" class="w3-bar-item w3-button">Introduction</a>
   <a href="#overview" onclick="w3_close()" class="w3-bar-item w3-button">Overview</a>
   <a href="#trans" onclick="w3_close()" class="w3-bar-item w3-button"> Transactions</a>
   <a href="#profit" onclick="w3_close()" class="w3-bar-item w3-button"> Profitability</a>
-  <a href="#dashboard" onclick="w3_close()" class="w3-bar-item w3-button"> Dashbord</a>
+  <a href="#dashboard" onclick="w3_close()" class="w3-bar-item w3-button"> Dashboard</a>
   <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button"> Team</a>
 </nav>
 
@@ -164,8 +164,8 @@ Sidebar on small screens when clicking the menu icon
     <P class="w3-xlarge" style='font-style: italic' >An analysis of how companies insiders trade stocks</P>
     <br>
 
-    <span class="w3-large">Among many participants in the US stock market, there is an unique group of invetors who possess knowledges and information that other investrs cannot get access to.  
-      These are the company "insiders".  In this study, we attempt to take a closer look into how insiders buy and selling activities. We want answer the following question: does the possession of non-public information give insiders an edge in trading?  </span>
+    <span class="w3-large">Among many participants in the US stock market, there is an unique group of investors who has knowledge and information that other investors cannot get access to.  
+      These are the company "insiders".  In this study, we attempt to take a closer look into how insiders buy and selling activities. We want to answer the following question: does the possession of non-public information give insiders an edge in trading?  </span>
    <br>
     <p><a href="#intro" class="w3-button w3-white w3-padding-large w3-large w3-margin-top w3-opacity w3-hover-opacity-off" id=startbutton>Start Exploring</a></p>
   </div>
@@ -178,7 +178,7 @@ Sidebar on small screens when clicking the menu icon
   <div class="w3-row-padding" style="margin-top:40px">
     <div class="w3-half" id = 'introtext'>
       <p class="w3-large" style= "font-weight: bold">INSIDERS: who are they? </p>
-			<p>An insider is a person who possesses access to <i><strong>material</strong></i> and <i><strong>non-public</strong></i> information about a corporation. This makes a company's directors and high-level executives insiders. </p>
+			<p>An insider is a person who possesses access to <i><strong>material</strong></i> and <i><strong>non-public</strong></i> information about a corporation. This makes a company's directors and high-level executive’s insiders. </p>
       <p>While insiders only owns a small percentage of the overall equity market (see chart to the right), they remain an unique group given that the information they possess cannot be accessed with other investors.</p>
     </div>
   <br>
@@ -253,7 +253,7 @@ Sidebar on small screens when clicking the menu icon
       .transition()
         .delay(2100)
         .attr('x', divwidth/2)
-        .attr('y',  divHeight*0.9)
+        .attr('y', (divHeight-divHeight/2*0.8/30*23*2)*1.2 + (divHeight/2*0.8-divHeight/2*0.8/30*0.7))
         .text('Owned by insiders: $667B')
         .style("text-anchor", "middle")
         // .style('font-size','15px')
@@ -269,7 +269,7 @@ Sidebar on small screens when clicking the menu icon
       <div class=" w3-half w3-left" style ='padding:10px' id = 'introdata'>
         <!-- <div class="w3-half"></div> -->
           <p class= "w3-large " style = 'font-weight: bold'>DATA</p>
-          <p>Because of the information they have access to, insiders are required by the SEC to file prior to buying and selling stocks of which they are an insider.  Also, it is required by law that insiders can only trade when they do not posess "material non-public" information. But is that truly the case?</p>
+          <p>Because of the information they have access to, insiders are required by the SEC to file prior to buying and selling stocks of which they are an insider.  Also, it is required by law that insiders can only trade when they do not possess "material non-public" information. But is that truly the case?</p>
           <p>We are using these required filings (Form 4) to do our analysis. While the data can be found on SEC website, we are using ready-cleaned data from WRDS and with supplemental data from Bloomberg.</p>
           <p>The data includes:</p>
           <li>1791 Stocks across 12 sectors</li>
@@ -329,7 +329,7 @@ Sidebar on small screens when clicking the menu icon
       <p class = 'w3-xlarge w3-'>OWNERSHIP OVERVIEW: Ownership varies across board</p>
     <div style='background-color:#E0E0E0' id= overviewtext>
       <p class= "w3-medium" style='font-weight: bold text-alignment: center'>Interesting Observations:</p>
-      <li class = 'w3-small'>Ownership varies across sector; Consumer service has the highest ownership, untilities lowest. </li>
+      <li class = 'w3-small'>Ownership varies across sector; Consumer service has the highest ownership, utilities lowest. </li>
       <li class = 'w3-small'>Ownership have fluctuated over time but generally staying inside the 2-4% band.  Ownership was lowest in 2013 and highest in 2015.</li>
       <li class = 'w3-small'>Among executives, CEOs own most shares while CFOs own least.</li>
       <li class = 'w3-small'>Insider ownership is highest among small cap companies (sub $5bn market cap) while lowest in large cap companies. </li>
@@ -433,9 +433,9 @@ Sidebar on small screens when clicking the menu icon
      scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                  
        vizElement.parentNode.insertBefore(scriptElement, vizElement);               
        </script>
-       
+       <p><a href="#profit" class="w3-button w3-black">NEXT CHART > Profitability</a></p>
   </div>
-  <div style ='padding:16px'></div> <p><a href="#profit" class="w3-button w3-black">NEXT CHART > Profitability</a></p></div>
+    
 </div>
  
 </div>
@@ -450,7 +450,7 @@ Sidebar on small screens when clicking the menu icon
         <p class= "w3-medium" style='font-weight: bold'>Interesting Observations:</p>
           <li class = 'w3-small'>Insiders purchases are more profitable than insider sales. </li>
           <li class = 'w3-small'>Trades tend to be most profitable 6 months from transaction date. </li>
-          <li class = 'w3-small'>Overall insiders in healthcare are most profitable, cosumer services least profitable. </li>
+          <li class = 'w3-small'>Overall insiders in healthcare are most profitable, consumer services least profitable. </li>
       
         </div>
       
@@ -489,7 +489,8 @@ Sidebar on small screens when clicking the menu icon
            vizElement.parentNode.insertBefore(scriptElement, vizElement);               
             </script>
   </div>
-  <div style ='padding:16px'><p><a href="#profit2" class="w3-button w3-black">NEXT CHART > Profitability- A timelapse</a></p></div>
+  <br>
+  <p><a href="#profit2" class="w3-button w3-black">NEXT CHART > Profitability- A timelapse</a></p>
 </div>
 <!-- Profitability Section-->
 <div class="w3-container w3-white" style="padding:16px" id="profit2">
@@ -498,15 +499,12 @@ Sidebar on small screens when clicking the menu icon
     <!-- <div class="w3-half"></div> -->
       <p class = 'w3-xlarge w3-'>PROFITABILITY: A timelapse</p>
       <div style ='background-color: #E0E0E0'>  
-        <p class= "w3-medium" style='font-weight: bold'>Observations:</p>
+        <p class= "w3-medium" style='font-weight: bold'>Play with it yourself! The chart below shows individual transactions color coded by sector. Observations:</p>
         <li class = 'w3-small'> Spread in profitability is wider for sells than buys. </li>
         <li class = 'w3-small'> Some sector usually have returns around 0% (e.g. capital goods), while other sectors see bigger swings in profitability (e.g. Healthcare, Tech) </li>
-        
-      </div>
+        </div>
       
-      <p style = 'color: #2a6f6f'>Play with it yourself! The chart below show individual transactions color coded by sector. 
-        <button class="popup-youtube" href="http://www.youtube.com/watch?v=JEoUT5rSEkk">DEMO</button><br/>
-        </p>  
+
       <!-- adding in profit chart -->
       <div class='tableauPlaceholder' id='viz1586817033133' style='position: relative'>
         <noscript>
@@ -543,7 +541,7 @@ Sidebar on small screens when clicking the menu icon
     
 
   </div>
-  <div style ='padding:16px'><p><a href="#conclusion" class="w3-button w3-black">NEXT> Conclusions</a></p></div>
+  <p><a href="#conclusion" class="w3-button w3-black">NEXT> Conclusions</a></p>
 </div>
 
 
@@ -554,11 +552,11 @@ Sidebar on small screens when clicking the menu icon
     <br>
     <br>
     <ol type='1'>
-    <li class = 'w3-medium'> While insiders only own a small percentage of the overall US, the consistency in profitability of insider trasactions suggest that insiders do have an edge in trading stocks.  </li>
+    <li class = 'w3-medium'> While insiders only own a small percentage of the overall US, the consistency in profitability of insider transactions suggest that insiders do have an edge in trading stocks.  </li>
     <br>
-    <li class = 'w3-medium'> Insiders show more consistency in profitable purchases than sales.  Which makes sense because there could be many reasons why insiders are selling stock (e.g. diversification, suppose of lifestyle, etc.) but there is only one reason why insiders would actively buy more shares - they expecte share prices to move higher.</li>
+    <li class = 'w3-medium'> Insiders show more consistency in profitable purchases than sales.  Which makes sense because there could be many reasons why insiders are selling stock (e.g. diversification, suppose of lifestyle, etc.) but there is only one reason why insiders would actively buy more shares - they expect share prices to move higher.</li>
     <br>
-    <li class = 'w3-medium'> Insiders in certain sectors, such as healthcare and tech, have more success in trading profitabily than other sectors such as utilities. </li>
+    <li class = 'w3-medium'> Insiders in certain sectors, such as healthcare and tech, have more success in trading profitability than other sectors such as utilities. </li>
   </ol>
    <br>
   </div>
@@ -570,8 +568,8 @@ Sidebar on small screens when clicking the menu icon
       <p class = 'w3-xlarge w3-'>Conclusion</p>
       <div style ='background-color: #E0E0E0'>  
         <p class= "w3-large" style='font-weight: bold'>Here are our top conclusions:</p>
-          <li class = 'w3-small'> While insiders only own a small percentage of the overall US, the consistency in profitability of insider trasactions suggest that insiders do have an edge in trading stocks.  </li>
-          <li class = 'w3-small'> Insiders show more consistency in profitable purchases than sales.  Which makes sense because there could be many reasons why insiders are selling stock (e.g. diversification, suppose of lifestyle, etc.) but there is only one reason why insiders would actively buy more shares - they expecte share prices to move higher.</li>
+          <li class = 'w3-small'> While insiders only own a small percentage of the overall US, the consistency in profitability of insider transactions suggest that insiders do have an edge in trading stocks.  </li>
+          <li class = 'w3-small'> Insiders show more consistency in profitable purchases than sales.  Which makes sense because there could be many reasons why insiders are selling stock (e.g. diversification, suppose of lifestyle, etc.) but there is only one reason why insiders would actively buy more shares - they expect share prices to move higher.</li>
           <li class = 'w3-small'>There were significantly fewer transactions between 2Q18 and 1Q19 across sectors.  </li>
       
         </div>
